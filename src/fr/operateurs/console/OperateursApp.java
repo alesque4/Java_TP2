@@ -6,26 +6,39 @@ public class OperateursApp {
 
 	@SuppressWarnings("resource")
 	public static void main(String[] args) {
-		int a=0, b=0;
+		float a, b;
 		Scanner questionUser = new Scanner(System.in);
 		
-		//Start
 		System.out.println("*****  Application Opérateurs *****");
 		
-		//premier nombre
-		System.out.println("Veuillez saisir le premier nombre...");
-		a = questionUser.nextInt();
-		
-		//deuxième nombre
-		System.out.println("Veuillez saisir le second nombre...");
-		b = questionUser.nextInt();
+		try {
+			//premier nombre
+			System.out.println("Veuillez saisir le premier nombre...");
+			a = questionUser.nextFloat();
+			
+			//deuxième nombre
+			System.out.println("Veuillez saisir le second nombre...");
+			b = questionUser.nextFloat();
+			
+		//Si on a pas de nombre en entrée, fin du programme
+		}catch(Exception e) {
+			System.out.println("Mauvaise entrée !");
+			return;
+		}		
 		
 		//Calculs et affichages
 		System.out.println(a+" + "+b+" = "+(a+b));
 		System.out.println(a+" - "+b+" = "+(a-b));
 		System.out.println(a+" * "+b+" = "+(a*b));
-		System.out.println(a+" / "+b+" = "+(a/b));
-		System.out.println(a+" % "+b+" = "+(a%b));
+		
+		//On fait attention aux divisions par zéro
+		if(b == 0) {
+			System.out.println("Division par zéro !");
+		}else {
+			System.out.println(a+" / "+b+" = "+(a/b));
+			System.out.println(a+" % "+b+" = "+(a%b));
+		}
+		
 		
 	}
 
